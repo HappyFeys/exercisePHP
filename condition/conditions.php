@@ -105,6 +105,54 @@ if (isset($_GET['age']) && isset($_GET['gender']) && isset($_GET['motherlang']))
     <input type="radio" name="motherlang" id="no" value="no"><label for="no">no</label>
 </form>
 
+<?php
+    if (isset($_GET['agefoot']) && isset($_GET['isWoman'])) {
+        $agefoot = $_GET['agefoot'];
+        $isWoman = $_GET['isWoman'];
+        $critere = "Sorry you don't fit the criteria";
+        if ($isWoman=='true' and $agefoot>=21 and $agefoot<=40) {
+            $critere = "Welcome to the team !";
+        }
+        echo $critere;
+    }
+?>
+<form method="get" action="">
+    <label for="agefoot">How old are you ?</label>
+    <input type="text" name="agefoot">
+    <label for="isWoman">Are you a woman ?</label>
+    <input type="radio" name="isWoman" id="isWoman" value="true"><label for="isWoman">Yes</label>
+    <input type="radio" name="isWoman" id="notWoman" value="false"><label for="notWoman">No</label>
+    <input type="submit" value="Join the team">
+</form>
+
+<?php
+    if(isset($_GET['note'])){
+        $note = $_GET['note'];
+        $grade = "Incorrect note";
+        if($note>=0 && $note<=20){
+            if ($note>=0 && $note<=4) {
+                $grade = "This work is really bad. What a dumb kid!";
+            } else if ($note<=9) {
+                $grade = "This is not sufficient. More studying is required.";
+            } else if ($note==10){
+                $grade = "Barely enough!";
+            } else if($note<=14){
+                $grade = "Not bad!";
+            } else if($note<=18){
+                $grade = "Bravo, bravissimo!";
+            } else if($note<=20){
+                $grade = "Too good to be true : confront the cheater!";
+            }
+        }
+        echo $grade;
+    }
+?>
+
+<form action="" method="get">
+    <label for="note">Enter the note</label>
+    <input type="text" name="note" id="note">
+    <input type="submit" value="Enter">
+</form>
 
 
 
